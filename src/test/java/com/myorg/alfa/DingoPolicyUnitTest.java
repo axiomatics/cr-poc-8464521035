@@ -191,7 +191,7 @@ public class DingoPolicyUnitTest {
         }
 
         @ParameterizedTest
-        @MethodSource("anyHouseAnySubjectProvider")
+        @MethodSource("kpkHouseAnySubjectProvider")
         public void accessRulesRow20_shouldNotPermitSearch(String house, String subject) {
                 // Grade level must be "K" for this test case
                 var grade = "K";

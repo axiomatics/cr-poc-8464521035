@@ -2,15 +2,22 @@ namespace school.records.filtering {
     import record.*
 
     /**
-     * This policy is used to permit access to records by K level teachers.
+     * Permit access to records by K level teachers in house "Kangaroo", "Platypus" or "Koala".
      * It applies filtering obligations to remove specific records.
      */
     policy permitKTeachersReadDingoRecordsWithFiltering {
         target
-            clause user.gradeLevel == "K"
             clause student.house == "Dingo"
+            clause user.userRole == "Teacher"
+            clause user.gradeLevel == "K"
+            clause user.house == "Kangaroo"
+                or user.house == "Platypus"
+                or user.house == "Koala"
         apply denyOverrides
 
+        /**
+         * Permit with filtering obligations to remove Music reports
+         */
         rule permitRecordsWithFilteredOutMusicReports {
                         condition stringBagSize(student.musicReportsIds) > 0
                         permit
@@ -20,6 +27,9 @@ namespace school.records.filtering {
                             }
                         }
                     }
+        /**
+         * Permit with filtering obligations to remove lunch orders > 5 items
+         */
         rule permitRecordsWithFilteredOutBigLunchOrders {
                         condition stringBagSize(student.bigLunchOrdersIds) > 0
                         permit
