@@ -1,6 +1,9 @@
 namespace school.records.kangaroo {
     import record.*
 
+    /**
+     * Permit access to records for students in house "Kangaroo".
+     */
     policy permitAccessToRecordsForStudentsInHouseKangaroo {
         target
             clause student.house == "Kangaroo"

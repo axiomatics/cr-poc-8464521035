@@ -16,29 +16,29 @@ namespace school.records.filtering {
         apply denyOverrides
 
         /**
-         * Permit with filtering obligations to remove Music reports
+         * Permit with filtering obligations to remove Music reports.
          */
         rule permitRecordsWithFilteredOutMusicReports {
-                        condition stringBagSize(student.musicReportsIds) > 0
-                        permit
-                        on permit {
-                            obligation filtering.removeEntity {
-                                filtering.reportsToRemove = student.musicReportsIds
-                            }
-                        }
-                    }
+            permit
+            condition stringBagSize(student.musicReportsIds) > 0
+            on permit {
+                obligation filtering.removeEntity {
+                    filtering.reportsToRemove = student.musicReportsIds
+                }
+            }
+        }
         /**
-         * Permit with filtering obligations to remove lunch orders > 5 items
+         * Permit with filtering obligations to remove lunch orders > 5 items.
          */
         rule permitRecordsWithFilteredOutBigLunchOrders {
-                        condition stringBagSize(student.bigLunchOrdersIds) > 0
-                        permit
-                        on permit {
-                            obligation filtering.removeEntity {
-                                filtering.lunchOrdersToRemove = student.bigLunchOrdersIds
-                            }
-                        }
-                    }
+            permit
+            condition stringBagSize(student.bigLunchOrdersIds) > 0
+            on permit {
+                obligation filtering.removeEntity {
+                    filtering.lunchOrdersToRemove = student.bigLunchOrdersIds
+                }
+            }
+        }
 
     }
 }

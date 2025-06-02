@@ -1,4 +1,8 @@
 namespace school {
+    /**
+     * Main policy for the school authorization system.
+     * This is the entry point for all authorization decisions.
+     */
     policyset Main {
         apply firstApplicable
 

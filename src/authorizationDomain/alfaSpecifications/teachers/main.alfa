@@ -5,12 +5,18 @@ namespace school.teachers {
 
     import school.records.kangaroo.*
 
+    /**
+     * Main policy for teachers.
+     */
     policyset Main {
         target
             clause user.userRole == "Teacher"
         condition user.gradeLevel == record.student.grade
         apply firstApplicable
 
+        /**
+         * Policy for Read operations.
+         */
         policyset Read {
             target
                 clause action.operation == "Read"
@@ -18,13 +24,16 @@ namespace school.teachers {
 
             permitAccessToRecordsForStudentsInHouseKangaroo
 
+            /**
+             * Permit read access to records for students in house "Dingo".
+             */
             policyset readRecordsForStudentsInHouseDingo {
                 target
                     clause student.house == "Dingo"
                 apply denyOverrides
 
                 /*
-                 * This policy is used to permit access to current records accessed from the intranet.
+                 * Permit read access to "Current" records accessed from the Intranet.
                  * It applies filtering obligations to remove specific fields from the records.
                  */
                 policy permitButRedactCurrentRecordsAccessedFromIntranet {
@@ -34,6 +43,9 @@ namespace school.teachers {
                     // Using denyOverrides to ensure that all filtering obligations are applied
                     apply denyOverrides
 
+                    /**
+                     * Permit read access but redact student interests.
+                     */
                     rule permitButRedactStudentInterest {
                         permit
                         condition not(user.house == "Dingo") && not(user.subject == "Math")
@@ -43,6 +55,9 @@ namespace school.teachers {
                             }
                         }
                     }
+                    /**
+                     * Permit read access but redact only keeping student record ID.
+                     */
                     rule permitButRedactKeepingStudentRecordId {
                         permit
                         condition stringAtLeastOneMemberOf(user.house, stringBag("Kangaroo", "Platypus", "Koala")) &&
@@ -59,6 +74,9 @@ namespace school.teachers {
 
                 permitKTeachersReadDingoRecordsWithFiltering
 
+                /**
+                 * Permit read access without redaction or filtering.
+                 */
                 policy permitNonFilteredNonRedactedAccess {
                     apply denyOverrides
 
@@ -69,6 +87,9 @@ namespace school.teachers {
                 }
             }
 
+            /**
+             * Permit read access to records for students in house "Koala".
+             */
             policyset readRecordsForStudentsInHouseKoala {
                 target
                     clause student.house == "Koala"
@@ -95,6 +116,9 @@ namespace school.teachers {
 
         }
 
+        /**
+         * Policy for Search operations.
+         */
         policyset Search {
             target
                 clause action.operation == "Search"
@@ -102,9 +126,11 @@ namespace school.teachers {
 
             permitAccessToRecordsForStudentsInHouseKangaroo
 
+            /**
+             * Deny to the student record if any reports or lunchOrders
+             * associated with it are not accessible according to other rules
+             */
             policyset {
-                target
-                    clause action.operation == "Search"
                 apply onPermitApplySecond
 
                 permitKTeachersReadDingoRecordsWithFiltering
@@ -122,8 +148,7 @@ namespace school.teachers {
                     rule { permit }
 
                 }
-
-        }
+            }
         }
     }
 }
