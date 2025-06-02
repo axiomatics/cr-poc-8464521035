@@ -1,0 +1,12 @@
+namespace school.records.kangaroo {
+    import record.*
+
+    policy permitAccessToRecordsForStudentsInHouseKangaroo {
+        target
+            clause student.house == "Kangaroo"
+        apply firstApplicable
+
+        rule { permit }
+
+    }
+}

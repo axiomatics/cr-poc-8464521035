@@ -7,7 +7,7 @@ group = 'com.myorg.alfa'
 
 alfa {
     namespace "MyProject"
-    mainpolicy "acme.Main"
+    mainpolicy "school.Main"
 
     licenseFile "license/axiomatics_PDP.license"
 

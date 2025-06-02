@@ -1,0 +1,45 @@
+namespace record.filtering {
+    // Obligation to remove a specific field from a record
+    obligation removeField  = "record.filtering.removeField"
+
+    // Obligation to only keep a specific field in a record
+    obligation keepField  = "record.filtering.keepField"
+
+    // Obligation to remove a whole record
+    obligation removeEntity  = "record.filtering.removeEntity"
+
+    attribute fieldToRemove {
+        // Represents the field to be removed from a record
+        id = "record.filtering.fieldToRemove"
+        type = string
+        category = resourceCat
+    }
+
+    attribute fieldToKeep {
+        // Represents the only field to keep in a record
+        id = "record.filtering.fieldToKeep"
+        type = string
+        category = resourceCat
+    }
+
+    attribute reportsToRedact {
+        // Represents reports to be redacted
+        id = "record.filtering.reportsToRedact"
+        type = string
+        category = resourceCat
+    }
+
+    attribute reportsToRemove {
+        // Represents subject reports to be removed
+        id = "record.filtering.reportsToRemove"
+        type = string
+        category = resourceCat
+    }
+
+    attribute lunchOrdersToRemove {
+        // Represents lunch orders to be removed
+        id = "record.filtering.lunchOrdersToRemove"
+        type = string
+        category = resourceCat
+    }
+}

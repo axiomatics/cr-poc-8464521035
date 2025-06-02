@@ -1,0 +1,34 @@
+namespace school.records.filtering {
+    import record.*
+
+    /**
+     * This policy is used to permit access to records by K level teachers.
+     * It applies filtering obligations to remove specific records.
+     */
+    policy permitKTeachersReadDingoRecordsWithFiltering {
+        target
+            clause user.gradeLevel == "K"
+            clause student.house == "Dingo"
+        apply denyOverrides
+
+        rule permitRecordsWithFilteredOutMusicReports {
+                        condition stringBagSize(student.musicReportsIds) > 0
+                        permit
+                        on permit {
+                            obligation filtering.removeEntity {
+                                filtering.reportsToRemove = student.musicReportsIds
+                            }
+                        }
+                    }
+        rule permitRecordsWithFilteredOutBigLunchOrders {
+                        condition stringBagSize(student.bigLunchOrdersIds) > 0
+                        permit
+                        on permit {
+                            obligation filtering.removeEntity {
+                                filtering.lunchOrdersToRemove = student.bigLunchOrdersIds
+                            }
+                        }
+                    }
+
+    }
+}

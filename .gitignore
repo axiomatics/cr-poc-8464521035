@@ -5,3 +5,4 @@ out/**/*
 .vscode/**/*
 **/src-gen
 buildSrc/build
+.DS_Store

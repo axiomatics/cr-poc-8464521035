@@ -1,5 +1,0 @@
-className: com.axiomatics.cr.pip.constant.ConstantAttributeConnector
-provides:
-  - user.role
-  - resource.location
-  - user.location

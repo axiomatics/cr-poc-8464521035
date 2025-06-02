@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration
+    xmlns="http://www.axiomatics.com/attributeconnector/parser/json/configuration"
+    identifier="filterableAndRedactableRecords">
+    <source>
+        <xacmlAttribute AttributeId="record.Student"
+            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+            DataType="http://www.w3.org/2001/XMLSchema#string" />
+    </source>
+    <mapping>
+        <xacmlAttribute AttributeId="record.student.house"
+            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+            DataType="http://www.w3.org/2001/XMLSchema#string" />
+        <jsonPath>$.house</jsonPath>
+    </mapping>
+    <mapping>
+        <xacmlAttribute AttributeId="record.student.grade"
+            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+            DataType="http://www.w3.org/2001/XMLSchema#string" />
+        <jsonPath>$.grade</jsonPath>
+    </mapping>
+    <mapping>
+        <xacmlAttribute AttributeId="record.student.recordType"
+            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+            DataType="http://www.w3.org/2001/XMLSchema#string" />
+        <jsonPath>$.recordType</jsonPath>
+    </mapping>
+    <mapping>
+        <xacmlAttribute AttributeId="record.student.mathReportsIds"
+            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+            DataType="http://www.w3.org/2001/XMLSchema#string" />
+        <jsonPath>$.reports[?(@.subject=="Math")].recordId</jsonPath>
+    </mapping>
+    <mapping>
+        <xacmlAttribute AttributeId="record.student.musicReportsIds"
+            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+            DataType="http://www.w3.org/2001/XMLSchema#string" />
+        <jsonPath>$.reports[?(@.subject=="Music")].recordId</jsonPath>
+    </mapping>
+    <mapping>
+        <xacmlAttribute AttributeId="record.student.bigLunchOrdersIds"
+            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+            DataType="http://www.w3.org/2001/XMLSchema#string" />
+        <jsonPath>$.lunchOrders[?(@.totalItems>5)].recordId</jsonPath>
+    </mapping>
+</configuration>

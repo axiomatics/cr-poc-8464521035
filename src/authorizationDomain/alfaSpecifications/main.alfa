@@ -1,8 +1,14 @@
-namespace acme {
-
+namespace school {
     policyset Main {
         apply firstApplicable
-        managers.Main
-        consultants.Main
+
+        teachers.Main
+
+        policy defaultToDeny {
+            apply firstApplicable
+
+            rule { deny }
+
+        }
     }
 }

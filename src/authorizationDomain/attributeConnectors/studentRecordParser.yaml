@@ -1,0 +1,7 @@
+className: com.axiomatics.attributeconnector.parser.json.ConnectorModule
+provides:
+  - record.student.house
+  - record.student.grade
+  - record.student.mathReportsIds
+  - record.student.musicReportsIds
+  - record.student.bigLunchOrdersIds

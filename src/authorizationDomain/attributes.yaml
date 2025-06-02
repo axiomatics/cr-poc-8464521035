@@ -1,20 +1,74 @@
-user.identity:
-  xacmlId: user.identity
-  category: AccessSubject
+user.userID:
+  xacmlId: user.userID
   datatype: string
-user.role:
-  xacmlId: user.role
   category: AccessSubject
+
+user.userRole:
+  xacmlId: user.userRole
   datatype: string
-user.location:
-  xacmlId: user.location
   category: AccessSubject
+
+user.gradeLevel:
+  xacmlId: user.gradeLevel
   datatype: string
-resource.identity:
-  xacmlId: resource.identity
+  category: AccessSubject
+
+user.house:
+  xacmlId: user.house
+  datatype: string
+  category: AccessSubject
+
+user.subject:
+  xacmlId: user.subject
+  datatype: string
+  category: AccessSubject
+
+action.operation:
+  xacmlId: action.operation
+  datatype: string
+  category: Action
+
+environment.accessPoint:
+  xacmlId: environment.accessPoint
+  datatype: string
+  category: Environment
+
+record.Student:
+  xacmlId: record.Student
+  datatype: string
   category: Resource
+
+record.student.grade:
+  xacmlId: record.student.grade
   datatype: string
-resource.location:
-  xacmlId: resource.location
   category: Resource
+
+record.student.house:
+  xacmlId: record.student.house
   datatype: string
+  category: Resource
+
+record.student.club:
+  xacmlId: record.student.club
+  datatype: string
+  category: Resource
+
+record.student.recordType:
+  xacmlId: record.student.recordType
+  datatype: string
+  category: Resource
+
+record.student.mathReportsIds:
+  xacmlId: record.student.mathReportsIds
+  datatype: string
+  category: Resource
+
+record.student.musicReportsIds:
+  xacmlId: record.student.musicReportsIds
+  datatype: string
+  category: Resource
+
+record.student.bigLunchOrdersIds:
+  xacmlId: record.student.bigLunchOrdersIds
+  datatype: string
+  category: Resource

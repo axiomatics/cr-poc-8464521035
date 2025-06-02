@@ -1,37 +1,151 @@
-namespace acme {
-    attribute adviceText {
-        id = "acme.adviceText"
+namespace user {
+    attribute userID {
+        // Unique identifier for each user, e.g., "UID12345"
+        // This should be a unique value for every user
+        id = "user.userID"
+        type = string
+        category = subjectCat
+    }
+
+    attribute userRole {
+        // Possible values: "Student", "Teacher", "Administrator"
+        // Cardinality: multiple
+        // An user can have multiple roles
+        id = "user.userRole"
+        type = string
+        category = subjectCat
+    }
+
+    attribute gradeLevel {
+        // Possible values: "K", "1", "2", "3", "4", "5"
+        // Cardinality: single
+        // Represents the grade level of a user, typically a teacher
+        id = "user.gradeLevel"
+        type = string
+        category = subjectCat
+    }
+
+    attribute house {
+        // Possible values: "Kangaroo", "Dingo", "Platypus", "Koala", "Wombat", "Emu"
+        // Cardinality: single
+        // Represents the house to which a user belongs
+        id = "user.house"
+        type = string
+        category = subjectCat
+    }
+
+    attribute subject {
+        // Possible values: "Math", "English", "Physics", "Music"
+        // Cardinality: multiple
+        // Represents the subjects a user is enrolled in
+        id = "user.subject"
+        type = string
+        category = subjectCat
+    }
+}
+
+namespace action {
+    attribute operation {
+        // Possible values: "Search", "Read"
+        // Cardinality: single
+        // Represents the operation being performed
+        id = "action.operation"
+        type = string
+        category = actionCat
+    }
+}
+
+namespace environment {
+    attribute accessPoint {
+        // Possible values: "Intranet", "Internet"
+        // Cardinality: single
+        // Represents the access point through which the user is accessing the system
+        id = "environment.accessPoint"
         type = string
         category = environmentCat
     }
 }
-namespace user {
-    attribute role {
-        id = "user.role"
+
+namespace record {
+    attribute Student {
+        // Represents a student record passed in the request
+        // This attribute does not appear in the policy, attributes representing its fielsd are used instead
+        id = "record.Student"
         type = string
-        category = subjectCat
+        category = resourceCat
     }
-    attribute location {
-        id = "user.location"
-        type = string
-        category = subjectCat
-    }
-     attribute identity {
-            id = "user.identity"
+
+    namespace student {
+        attribute house {
+            // Possible values: "Kangaroo", "Dingo", "Platypus", "Koala", "Wombat", "Emu"
+            // Represents the house to which a student belongs
+            id = "record.student.house"
+            type = string
+            category = resourceCat
+        }
+
+        attribute club {
+            // Possible values: "Art", "Book", "Chess", "Cooking", "Dance", "Drama", "Film", "Language", "Photography"
+            // Represents the clubs a student can be part of
+            id = "record.student.club"
+            type = string
+            category = resourceCat
+        }
+
+        attribute recordType {
+            // Represents the type of record for a student, e.g., "Current"
+            id = "record.student.recordType"
+            type = string
+            category = resourceCat
+        }
+
+        attribute grade {
+            // Possible values: "K", "1", "2", "3", "4", "5"
+            // Cardinality: single
+            // Represents the grade level of the student
+            id = "record.student.grade"
             type = string
             category = subjectCat
         }
-}
-namespace resource {
-    attribute location {
-        id = "resource.location"
-        type = string
-        category = resourceCat
-    }
-    attribute identity {
-        id = "resource.identity"
-        type = string
-        category = resourceCat
-    }
-}
 
+        attribute mathReportsIds {
+            // Represents the Math reports IDs in a student record
+            id = "record.student.mathReportsIds"
+            type = string
+            category = resourceCat
+        }
+
+        attribute musicReportsIds {
+            // Represents the Music reports IDs in a student record
+            id = "record.student.musicReportsIds"
+            type = string
+            category = resourceCat
+        }
+
+        attribute bigLunchOrdersIds {
+            // Represents the Music reports IDs in a student record
+            id = "record.student.bigLunchOrdersIds"
+            type = string
+            category = resourceCat
+        }
+    }
+
+    namespace report {
+        attribute subject {
+            // Possible values: "Math", "English", "Physics", "Music"
+            // Represents the subject of the report
+            id = "record.report.subject"
+            type = string
+            category = resourceCat
+        }
+    }
+
+    namespace lunchOrder {
+        attribute totalItems {
+            // Represents the total number of items in a lunch order
+            id = "record.lunchOrder.totalItems"
+            type = integer
+            category = resourceCat
+        }
+    }
+}
